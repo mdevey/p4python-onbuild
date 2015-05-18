@@ -1,0 +1,16 @@
+app:
+  build: .
+
+# 1) .p4config (with P4USER P4PORT) & .p4tickets is my preferred method 
+#    ie do it once only and forget about it.
+  volumes:
+   - .p4config:/root/.p4config:ro     #sub-images need to repeat this.
+   - ~/.p4tickets:/root/.p4tickets:ro #sub-images need to repeat this.
+   - app.py:/usr/src/app/app.py:ro    #sub-images probably repeat this.
+
+# 2) enviroment variables is the alternative (also docker run -e --env --envfile)  
+#  environment:
+   #- P4PASSWORD=secret
+   #- P4USER=mdevey
+   #- P4PORT=myserver:6666
+
